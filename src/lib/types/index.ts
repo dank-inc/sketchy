@@ -16,13 +16,6 @@ export type SketchParams = {
 export type SketchConfig = {
   containerId?: string
   animate?: true
-  dimensions?: Vec2
+  dimensions?: [number, number]
   startTime?: number
-}
-
-export type Vec2 = [number, number]
-
-export type SketchState = {
-  sketch: Sketch
-  t: number
 }

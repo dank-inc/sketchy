@@ -24,8 +24,5 @@ export const loadSketch = (sketch: Sketch, params: SketchParams) => {
   }
 }
 
-export const createSketch: Sketch = () => {
-  // TODO: fancy typed generator
-
-  return (params) => {}
-}
+// TODO: fancy typed generator
+// type CreateSketch = () => Sketch
