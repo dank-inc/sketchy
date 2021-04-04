@@ -1,0 +1,29 @@
+{
+  "name": "@dank-inc/sketchy",
+  "version": "1.0.0",
+  "description": "",
+  "files": ["lib"],
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "lint": "tsc --noEmit",
+    "compile": "tsc",
+    "deploy": "npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@dank-inc/lewps": "^0.4.0",
+    "@dank-inc/super-mouse": "^0.5.6",
+    "@types/node": "^14.14.37",
+    "bezier-easing": "^2.1.0",
+    "nice-color-palettes": "^3.0.0",
+    "parcel": "^2.0.0-beta.2",
+    "simplex-noise": "^2.4.0",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
