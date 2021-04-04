@@ -3,12 +3,13 @@ import { controls } from '../utils/controls'
 
 const animateSketch = (frame: Frame, params: SketchParams) => {
   frame(params)
+  console.log('animated!')
 
-  setInterval(() => {
-    // TODO: better than this
+  // TODO: delta time
 
-    frame({ ...params, time: (params.time += 0.1) })
-  }, 1000 / 15)
+  requestAnimationFrame(() =>
+    animateSketch(frame, { ...params, time: (params.time += 0.01) }),
+  )
 }
 
 export const loadSketch = (createSketch: Sketch, params: SketchParams) => {

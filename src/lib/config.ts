@@ -26,6 +26,7 @@ export const createParams = (config: SketchConfig): SketchParams => {
     time: config.startTime || 0,
     width: canvas.width,
     height: canvas.height,
+    animated: config.animate,
   }
 
   return params
