@@ -22,13 +22,10 @@ export const loadSketch = (sketch: Sketch, params: SketchParams) => {
   } else {
     frame(params)
   }
+}
 
-  // controls({
-  //   onNext: () => {
-  //     frame({ ...params, time: (params.time += 0.5) })
-  //   },
-  //   onPrev: () => {
-  //     frame({ ...params, time: (params.time -= 0.5) })
-  //   },
-  // })
+export const createSketch: Sketch = () => {
+  // TODO: fancy typed generator
+
+  return (params) => {}
 }
