@@ -2,7 +2,7 @@
 
 A super-dank sketching library built with ♥ and typescript.
 
-# How to use!
+# Getting Started
 
 This library is a nice typescript wrapper for the 2d Web canvas.
 
@@ -69,3 +69,8 @@ export const sketch: Sketch = () => {
 
 export default sketch
 ```
+
+# Todo
+
+- [ ] compile to js script
+- [ ] threejs
