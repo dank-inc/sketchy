@@ -1,9 +1,8 @@
-import { Sketch } from '../types'
-import test from './test'
-
+import { Sketch } from '../lib/types'
+import example from './example'
 
 const sketches: Record<string, Sketch> = {
-  test
+  example,
 }
 
 export default sketches

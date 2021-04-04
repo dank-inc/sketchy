@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import { SketchConfig, SketchParams } from '../types'
+import { SketchConfig, SketchParams } from './types'
 dotenv.config()
 
 export const createParams = (config: SketchConfig): SketchParams => {

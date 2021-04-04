@@ -1,18 +1,23 @@
 {
   "name": "@dank-inc/sketchy",
-  "version": "1.0.0",
-  "description": "",
-  "files": ["lib"],
+  "version": "0.1.0",
+  "description": "A Super-dank sketching library built with ♥ and typescript!",
+  "repository": {
+    "url": "https://github.com/dank-inc/sketchy"
+  },
+  "files": [
+    "lib"
+  ],
   "main": "lib/index.js",
   "scripts": {
     "start": "parcel src/index.html",
     "lint": "tsc --noEmit",
-    "compile": "tsc",
+    "compile": "rm -rf lib && tsc",
     "deploy": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Elijah Lucian",
+  "license": "MIT",
   "devDependencies": {
     "@dank-inc/lewps": "^0.4.0",
     "@dank-inc/super-mouse": "^0.5.6",

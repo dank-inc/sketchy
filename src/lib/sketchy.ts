@@ -1,5 +1,4 @@
-import { Frame, Sketch, SketchParams } from '../types'
-import { controls } from '../utils/controls'
+import { Frame, Sketch, SketchParams } from './types'
 
 const animateSketch = (frame: Frame, params: SketchParams) => {
   frame(params)
@@ -12,10 +11,10 @@ const animateSketch = (frame: Frame, params: SketchParams) => {
   )
 }
 
-export const loadSketch = (createSketch: Sketch, params: SketchParams) => {
+export const loadSketch = (sketch: Sketch, params: SketchParams) => {
   params.context.clearRect(0, 0, params.width, params.height)
 
-  const frame = createSketch(params)
+  const frame = sketch(params)
 
   if (params.animated) {
     console.log('animating!')
@@ -24,12 +23,12 @@ export const loadSketch = (createSketch: Sketch, params: SketchParams) => {
     frame(params)
   }
 
-  controls({
-    onNext: () => {
-      frame({ ...params, time: (params.time += 0.5) })
-    },
-    onPrev: () => {
-      frame({ ...params, time: (params.time -= 0.5) })
-    },
-  })
+  // controls({
+  //   onNext: () => {
+  //     frame({ ...params, time: (params.time += 0.5) })
+  //   },
+  //   onPrev: () => {
+  //     frame({ ...params, time: (params.time -= 0.5) })
+  //   },
+  // })
 }

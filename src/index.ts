@@ -9,4 +9,6 @@ const params = createParams({
   // dimensions: [1200, 1200],
 })
 
-loadSketch(sketches[process.env.SKETCH || 'test'], params)
+const sketch = sketches[process.env.SKETCH || 'example']
+
+loadSketch(sketch, params)
