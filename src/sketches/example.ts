@@ -1,14 +1,14 @@
 import { forU } from '@dank-inc/lewps'
-import { Sketch } from '../lib/types'
+import { createSketch } from '../lib/sketchy'
 import { TAU } from '../utils/maff'
 
 // type the function, and all params are implicitly typed
-export const sketch: Sketch = () => {
+export default createSketch(() => {
   // initialize your sketch and objects
   const points = []
 
-  const xSteps = 5
-  const ySteps = 5
+  const xSteps = 15
+  const ySteps = 15
 
   forU(xSteps, (u) => {
     forU(ySteps, (v) => {
@@ -31,12 +31,10 @@ export const sketch: Sketch = () => {
       context.fillRect(
         x,
         y,
-        Math.cos(time + v * TAU) * 200,
-        Math.sin((2 * u + (0.2 * time + v) * 2) * Math.PI) * 20,
+        Math.cos(time + v * TAU) * 100,
+        Math.sin((2 * u + (0.2 * time + v) * 2) * Math.PI) * 100,
       )
       context.restore()
     }
   }
-}
-
-export default sketch
+})
