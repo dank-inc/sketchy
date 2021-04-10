@@ -26,6 +26,8 @@ loadSketch(sketch, params)
 
 ## Example Sketch
 
+note: This library and it's helper functions all assume you are workng with normalized values :)
+
 ```ts
 import { forU } from '@dank-inc/lewps'
 import { Sketch } from '@dank-inc/sketchy/types'
