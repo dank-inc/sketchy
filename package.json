@@ -19,7 +19,7 @@
   "author": "Elijah Lucian",
   "license": "MIT",
   "devDependencies": {
-    "@dank-inc/lewps": "^0.7.0",
+    "@dank-inc/lewps": "^0.8.0",
     "@dank-inc/super-mouse": "^0.5.6",
     "@types/node": "^14.14.37",
     "bezier-easing": "^2.1.0",
