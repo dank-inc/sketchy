@@ -1,5 +1,5 @@
 on:
-  pull_request:
+  push:
     branches: [main]
 
 jobs:
@@ -15,7 +15,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm i
-      - run: npm run lint
       - run: npm run deploy
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
