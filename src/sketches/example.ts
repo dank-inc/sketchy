@@ -1,40 +1,27 @@
-import { forU } from '@dank-inc/lewps'
-import { createSketch } from '../lib/sketchy'
-import { TAU } from '../utils/maff'
+import { mapUV } from '@dank-inc/lewps'
+import { createSketch, Vec2 } from '../lib'
 
 // type the function, and all params are implicitly typed
-export default createSketch(() => {
+export default createSketch((params) => {
+  // destructure helper functions and convenience variables
+  const { hsl, context, setFillStyle, setFilter, sin, cos, lerp } = params
+
   // initialize your sketch and objects
-  const points = []
+  const points = mapUV<Vec2>(15, 15, (u, v) => [u, v])
 
-  const xSteps = 15
-  const ySteps = 15
-
-  forU(xSteps, (u) => {
-    forU(ySteps, (v) => {
-      points.push({ u, v })
-    })
-  })
-
-  return ({ context, width, height, time }) => {
+  return ({ width, height, t }) => {
     // draw loop function
-    context.fillStyle = '#111'
+
+    setFillStyle('#111')
     context.fillRect(0, 0, width, height)
 
-    context.fillStyle = '#ccc'
-    for (let { u, v } of points) {
-      const x = u * width
-      const y = v * height
+    for (let [u, v] of points) {
+      const x = lerp(u, width, width / 3)
+      const y = lerp(v, height, 200)
 
-      context.save()
-      context.translate(width / xSteps / 2, height / ySteps / 2)
-      context.fillRect(
-        x,
-        y,
-        Math.cos(time + v * TAU) * 100,
-        Math.sin((2 * u + (0.2 * time + v) * 2) * Math.PI) * 100,
-      )
-      context.restore()
+      setFillStyle(hsl(u, 0.5, 0.5))
+
+      context.fillRect(x, y, cos(v, 1, 20), sin(t(0.3) + u, 1, 50))
     }
   }
 })

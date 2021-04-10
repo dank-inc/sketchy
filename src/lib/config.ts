@@ -1,5 +1,8 @@
 import dotenv from 'dotenv'
 import { SketchConfig, SketchParams } from './types'
+import { hsl, blur } from './helpers'
+import { cos, sin, lerp } from './maff'
+
 dotenv.config()
 
 export const createParams = (config: SketchConfig): SketchParams => {
@@ -22,11 +25,27 @@ export const createParams = (config: SketchConfig): SketchParams => {
   }
 
   const params: SketchParams = {
-    context,
+    // config
     time: config.startTime || 0,
     width: canvas.width,
     height: canvas.height,
     animated: config.animate,
+    context,
+
+    // render helpers
+    setFilter: (val: string) => (context.filter = val),
+    setFillStyle: (val: string) => (context.fillStyle = val),
+
+    // helper functions
+    hsl,
+    blur,
+    // maff
+    TAU: Math.PI * 2,
+    PI: Math.PI,
+    sin,
+    cos,
+    t: () => 0,
+    lerp,
   }
 
   return params
