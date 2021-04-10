@@ -1,0 +1,19 @@
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs_on: node:14-alpine
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install
+        run: npm i
+
+      - name: lint
+        run: npm run lint
+
+      - name: deploy
+        run: npm run deploy
