@@ -1,6 +1,6 @@
 {
   "name": "@dank-inc/sketchy",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "A Super-dank sketching library built with ♥ and typescript!",
   "repository": {
     "url": "https://github.com/dank-inc/sketchy"

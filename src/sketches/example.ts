@@ -8,6 +8,7 @@ export default createSketch((params) => {
 
   // initialize your sketch and objects
   const points = mapUV<Vec2>(15, 15, (u, v) => [u, v])
+  console.log(points)
 
   return ({ width, height, t }) => {
     // draw loop function
