@@ -1,4 +1,3 @@
-import { BlurFn, HSLFn } from '../helpers'
 import { Lerpr, Scaler, SinCosFn } from '../maff'
 
 export type SketchFrame = (params: SketchParams) => void
@@ -26,12 +25,6 @@ export type SketchParams = {
   // render helpers
   setFilter: (val: string) => void
   setFillStyle: (val: string) => void
-
-  // helper functions
-  hsl: HSLFn
-  blur: BlurFn
-
-  // maff
 }
 
 export type SketchConfig = {

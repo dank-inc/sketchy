@@ -1,10 +1,11 @@
 import { mapUV } from '@dank-inc/lewps'
 import { createSketch, Vec2 } from '../lib'
+import { hsl } from '../lib/helpers'
 
 // type the function, and all params are implicitly typed
 export default createSketch((params) => {
   // destructure helper functions and convenience variables
-  const { hsl, context, setFillStyle, setFilter, sin, cos, lerp } = params
+  const { context, setFillStyle, setFilter, sin, cos, lerp } = params
 
   // initialize your sketch and objects
   const points = mapUV<Vec2>(15, 15, (u, v) => [u, v])
