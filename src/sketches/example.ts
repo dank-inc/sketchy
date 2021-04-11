@@ -1,4 +1,4 @@
-import { mapUV } from '@dank-inc/lewps'
+import { mapXY } from '@dank-inc/lewps'
 import { createSketch, Vec2 } from '../lib'
 import { hsl } from '../lib/helpers'
 
@@ -8,8 +8,7 @@ export default createSketch((params) => {
   const { context, setFillStyle, setFilter, sin, cos, lerp } = params
 
   // initialize your sketch and objects
-  const points = mapUV<Vec2>(15, 15, (u, v) => [u, v])
-  console.log(points)
+  const points = mapXY<Vec2>(15, 15, (u, v) => [u, v])
 
   return ({ width, height, t }) => {
     // draw loop function
