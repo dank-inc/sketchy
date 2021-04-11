@@ -1,5 +1,6 @@
 // export const blur = (amount: number): string => `blur(${amount}px)`
-export const blur = (u: number, range: number): string => `blur(${u * range}px)`
+export const blur = (u: number, range?: number): string =>
+  `blur(${range ? u * range : u}px)`
 
 export const brightness = (u: number) => `brightness(${u * 100}%)`
 export const contrast = (u: number) => `contrast(${u * 100}%)`

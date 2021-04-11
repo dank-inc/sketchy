@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import { SketchConfig, SketchParams } from './types'
 import { cos, sin, lerp } from './maff'
+import { createControls } from './helpers/controls'
 
 dotenv.config()
 
@@ -24,6 +25,7 @@ export const createParams = (config: SketchConfig): SketchParams => {
   }
 
   const params: SketchParams = {
+    // state
     // config
     time: config.startTime || 0,
     width: canvas.width,

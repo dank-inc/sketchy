@@ -7,12 +7,16 @@ export type SketchFrame = (params: SketchParams) => void
 export type Sketch = (params: SketchParams) => Frame // generator
 export type Frame = (params: SketchParams) => void // stateless frame
 
+export type SketchState<T = {}> = T
+export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
+
 export type SketchParams = {
   // config
   time: number
   width: number
   height: number
   animated?: boolean
+
   context: CanvasRenderingContext2D
   // Maff
   TAU: number
