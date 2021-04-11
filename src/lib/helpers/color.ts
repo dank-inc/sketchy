@@ -14,9 +14,21 @@ export const rgb: RGBFn = (ru, gu, bu, a = 1) => {
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
 
-export const hex = (ru: number, gu: number, bu: number) => {
+export const hex = (ru: number, gu?: number, bu?: number) => {
   const r = Math.floor(ru * 255).toString(16)
-  const g = Math.floor(gu * 255).toString(16)
-  const b = Math.floor(bu * 255).toString(16)
+  const g = Math.floor((gu || ru) * 255).toString(16)
+  const b = Math.floor((bu || ru) * 255).toString(16)
   return `#${r}${g}${b}`
+}
+
+//  TODO Create Linear Gradient
+export type LinearGradientGeneratorFn = (
+  ctx: CanvasRenderingContext2D,
+) => CanvasGradient
+export const createLinearGradient: LinearGradientGeneratorFn = (ctx) => {
+  var grd = ctx.createLinearGradient(0, 0, 0, 10)
+  // grd.addColorStop(0, c1);
+  // grd.addColorStop(1, c2);
+
+  return grd
 }

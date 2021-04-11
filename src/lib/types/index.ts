@@ -1,4 +1,5 @@
 import { Lerpr, Scaler, SinCosFn } from '../maff'
+import { LinearGradientGeneratorFn } from '../helpers/color'
 
 export type SketchFrame = (params: SketchParams) => void
 
@@ -29,6 +30,10 @@ export type SketchParams = {
   // render helpers
   setFilter: (val: string) => void
   setFillStyle: (val: string) => void
+  setStrokeStyle: (val: string) => void
+
+  // generators
+  createGradient: LinearGradientGeneratorFn
 }
 
 export type SketchConfig = {
