@@ -14,6 +14,8 @@ export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
 export type SketchParams = {
   // config
   time: number
+  startTime: number
+  dt: number
   width: number
   height: number
   animated?: boolean
@@ -40,5 +42,5 @@ export type SketchConfig = {
   containerId?: string
   animate?: true
   dimensions?: [number, number]
-  startTime?: number
+  timeOffset?: number
 }

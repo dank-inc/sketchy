@@ -29,7 +29,9 @@ export const createParams = (config: SketchConfig): SketchParams => {
   const params: SketchParams = {
     // state
     // config
-    time: config.startTime || 0,
+    time: config.timeOffset || 0,
+    dt: 0,
+    startTime: +new Date(),
     width: canvas.width,
     height: canvas.height,
     animated: config.animate,

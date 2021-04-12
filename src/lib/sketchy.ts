@@ -1,23 +1,20 @@
 import { Frame, Sketch, SketchParams } from './types'
 
-let lastTime = +new Date()
-
 const animateSketch = (frame: Frame, params: SketchParams) => {
   frame(params)
 
   const now = +new Date()
 
-  const dt = now - lastTime
+  const dt = now - (params.startTime + params.time)
 
-  lastTime += dt
-
-  const time = params.time + dt / 1000
+  const time = params.time + dt
 
   requestAnimationFrame(() =>
     animateSketch(frame, {
       ...params,
       time,
-      t: (s = 1, o = 0) => time * s + o,
+      dt,
+      t: (s = 1, o = 0) => 0.001 * time * s + o,
     }),
   )
 }
