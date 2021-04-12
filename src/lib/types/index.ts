@@ -1,5 +1,5 @@
-import { BlurFn, HSLFn } from '../helpers'
 import { Lerpr, Scaler, SinCosFn } from '../maff'
+import { LinearGradientGeneratorFn } from '../helpers/color'
 
 export type SketchFrame = (params: SketchParams) => void
 
@@ -8,12 +8,16 @@ export type SketchFrame = (params: SketchParams) => void
 export type Sketch = (params: SketchParams) => Frame // generator
 export type Frame = (params: SketchParams) => void // stateless frame
 
+export type SketchState<T = {}> = T
+export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
+
 export type SketchParams = {
   // config
   time: number
   width: number
   height: number
   animated?: boolean
+
   context: CanvasRenderingContext2D
   // Maff
   TAU: number
@@ -26,12 +30,10 @@ export type SketchParams = {
   // render helpers
   setFilter: (val: string) => void
   setFillStyle: (val: string) => void
+  setStrokeStyle: (val: string) => void
 
-  // helper functions
-  hsl: HSLFn
-  blur: BlurFn
-
-  // maff
+  // generators
+  createGradient: LinearGradientGeneratorFn
 }
 
 export type SketchConfig = {

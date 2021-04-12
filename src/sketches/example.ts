@@ -1,20 +1,39 @@
-import { mapUV } from '@dank-inc/lewps'
+import { mapXY } from '@dank-inc/lewps'
 import { createSketch, Vec2 } from '../lib'
+import { hsl, hex } from '../lib/helpers'
+import { createControls } from '../lib/helpers/controls'
 
 // type the function, and all params are implicitly typed
 export default createSketch((params) => {
   // destructure helper functions and convenience variables
-  const { hsl, context, setFillStyle, setFilter, sin, cos, lerp } = params
+  const { context, setFillStyle, setFilter, sin, cos, lerp } = params
 
   // initialize your sketch and objects
-  const points = mapUV<Vec2>(15, 15, (u, v) => [u, v])
-  console.log(points)
+  const points = mapXY<Vec2>(15, 15, (u, v) => [u, v])
+
+  const state = {
+    x: 0,
+    y: 0,
+    lastKey: '',
+    blur: false,
+  }
+
+  const [controls] = createControls({
+    KeyQ: () => state.x--,
+    KeyE: () => state.x++,
+    Space: () => (state.blur = !state.blur),
+  })
 
   return ({ width, height, t }) => {
     // draw loop function
+    const lastKey = controls.shift()
+    if (lastKey) state.lastKey = lastKey
 
     setFillStyle('#111')
     context.fillRect(0, 0, width, height)
+
+    setFillStyle(hex(0.5, 0.5, 0.5))
+    context.fillText(state.lastKey, 10, height - 100)
 
     for (let [u, v] of points) {
       const x = lerp(u, width, width / 3)
@@ -22,7 +41,12 @@ export default createSketch((params) => {
 
       setFillStyle(hsl(u, 0.5, 0.5))
 
-      context.fillRect(x, y, cos(v, 1, 20), sin(t(0.3) + u, 1, 50))
+      context.fillRect(
+        x + state.x * 10,
+        y + state.y * 10,
+        cos(v, 1, 20),
+        sin(t(0.3) + u, 1, 50),
+      )
     }
   }
 })

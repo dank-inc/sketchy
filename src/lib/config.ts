@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import { SketchConfig, SketchParams } from './types'
-import { hsl, blur } from './helpers'
 import { cos, sin, lerp } from './maff'
+import { createLinearGradient } from './helpers/color'
 
 dotenv.config()
 
@@ -24,7 +24,10 @@ export const createParams = (config: SketchConfig): SketchParams => {
     canvas.height = rootElement.clientHeight
   }
 
+  context.lineCap
+
   const params: SketchParams = {
+    // state
     // config
     time: config.startTime || 0,
     width: canvas.width,
@@ -35,10 +38,11 @@ export const createParams = (config: SketchConfig): SketchParams => {
     // render helpers
     setFilter: (val: string) => (context.filter = val),
     setFillStyle: (val: string) => (context.fillStyle = val),
+    setStrokeStyle: (val: string) => (context.fillStyle = val),
 
-    // helper functions
-    hsl,
-    blur,
+    // generators
+    createGradient: () => createLinearGradient(context),
+
     // maff
     TAU: Math.PI * 2,
     PI: Math.PI,
