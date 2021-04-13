@@ -85,7 +85,6 @@ export default createSketch((params) => {
 
 # Todo
 
-- [ ] compile to js script
 - [ ] threejs
 - [ ] sketch browser
 - [ ] sketch server
