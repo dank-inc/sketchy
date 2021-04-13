@@ -40,6 +40,7 @@ export type SketchParams = {
 
 export type SketchConfig = {
   containerId?: string
+  element?: HTMLElement
   animate?: true
   dimensions?: [number, number]
   timeOffset?: number

@@ -7,7 +7,7 @@ dotenv.config()
 
 export const createParams = (config: SketchConfig): SketchParams => {
   const id = config.containerId || 'root'
-  const rootElement = document.getElementById(id)
+  const rootElement = config.element || document.getElementById(id)
   if (!rootElement) throw new Error(`No Root Element Found at ${id}`)
 
   const canvas = document.createElement('canvas')

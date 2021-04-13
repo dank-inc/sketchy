@@ -6,6 +6,7 @@ import { createParams } from './lib/config'
 const params = createParams({
   containerId: 'root',
   animate: true,
+
   // dimensions: [1200, 1200],
 })
 
