@@ -13,6 +13,7 @@
   "main": "lib/index.js",
   "license": "MIT",
   "keywords": [
+    "typescript",
     "canvas",
     "creative coding",
     "creative",
