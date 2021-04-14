@@ -1,6 +1,6 @@
-import { Frame, Sketch, SketchParams } from './types'
+import { Frame, Sketch, SketchyParams } from './types'
 
-const animateSketch = (frame: Frame, params: SketchParams) => {
+const animateSketch = (frame: Frame, params: SketchyParams) => {
   frame(params)
 
   const now = +new Date()
@@ -19,7 +19,7 @@ const animateSketch = (frame: Frame, params: SketchParams) => {
   )
 }
 
-export const loadSketch = (sketch: Sketch, params: SketchParams) => {
+export const loadSketch = (sketch: Sketch, params: SketchyParams) => {
   params.context.clearRect(0, 0, params.width, params.height)
 
   const frame = sketch(params)

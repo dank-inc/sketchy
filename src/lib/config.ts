@@ -1,4 +1,5 @@
 import dotenv from 'dotenv'
+
 import { BlendMode, SketchConfig, SketchyParams } from './types'
 import { cos, sin, lerp } from './maff'
 import { createLinearGradient } from './helpers/color'
