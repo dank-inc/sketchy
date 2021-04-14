@@ -3,10 +3,8 @@ import { LinearGradientGeneratorFn } from '../helpers/color'
 
 export type SketchFrame = (params: SketchParams) => void
 
-// export type Sketch = (params: SketchParams) => SketchFrame
-
-export type Sketch = (params: SketchParams) => Frame // generator
-export type Frame = (params: SketchParams) => void // stateless frame
+export type Sketch = (params: SketchParams) => Frame
+export type Frame = (params: SketchParams) => void
 
 export type SketchState<T = {}> = T
 export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
@@ -19,11 +17,11 @@ export type SketchParams = {
   width: number
   height: number
   animated?: boolean
-
   context: CanvasRenderingContext2D
   // Maff
   TAU: number
   PI: number
+  abs: Math['abs']
   sin: SinCosFn
   cos: SinCosFn
   t: Scaler
@@ -33,6 +31,7 @@ export type SketchParams = {
   setFilter: (val: string) => void
   setFillStyle: (val: string) => void
   setStrokeStyle: (val: string) => void
+  setBlendMode: (val: BlendMode) => void
 
   // generators
   createGradient: LinearGradientGeneratorFn
@@ -45,3 +44,31 @@ export type SketchConfig = {
   dimensions?: [number, number]
   timeOffset?: number
 }
+
+export type BlendMode =
+  | 'source-over'
+  | 'source-in'
+  | 'source-out'
+  | 'source-atop'
+  | 'destination-over'
+  | 'destination-in'
+  | 'destination-out'
+  | 'destination-atop'
+  | 'lighter'
+  | 'copy'
+  | 'xor'
+  | 'multiply'
+  | 'screen'
+  | 'overlay'
+  | 'darken'
+  | 'lighten'
+  | 'color-dodge'
+  | 'color-burn'
+  | 'hard-light'
+  | 'soft-light'
+  | 'difference'
+  | 'exclusion'
+  | 'hue'
+  | 'saturation'
+  | 'color'
+  | 'luminosity'

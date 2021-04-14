@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import { SketchConfig, SketchParams } from './types'
+import { BlendMode, SketchConfig, SketchParams } from './types'
 import { cos, sin, lerp } from './maff'
 import { createLinearGradient } from './helpers/color'
 
@@ -41,6 +41,7 @@ export const createParams = (config: SketchConfig): SketchParams => {
     setFilter: (val: string) => (context.filter = val),
     setFillStyle: (val: string) => (context.fillStyle = val),
     setStrokeStyle: (val: string) => (context.fillStyle = val),
+    setBlendMode: (val: BlendMode) => (context.globalCompositeOperation = val),
 
     // generators
     createGradient: () => createLinearGradient(context),
@@ -48,6 +49,7 @@ export const createParams = (config: SketchConfig): SketchParams => {
     // maff
     TAU: Math.PI * 2,
     PI: Math.PI,
+    abs: Math.abs,
     sin,
     cos,
     t: () => 0,
