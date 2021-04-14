@@ -83,6 +83,10 @@ export default createSketch((params) => {
 })
 ```
 
+This will give you something that looks like this:
+
+![](https://thumbs.gfycat.com/BasicWelltodoGavial-mobile.mp4)
+
 # Todo
 
 - [ ] threejs
