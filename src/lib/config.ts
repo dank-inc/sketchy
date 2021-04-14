@@ -1,32 +1,41 @@
 import dotenv from 'dotenv'
-import { BlendMode, SketchConfig, SketchParams } from './types'
+import { BlendMode, SketchConfig, SketchyParams } from './types'
 import { cos, sin, lerp } from './maff'
 import { createLinearGradient } from './helpers/color'
+import { Vec2 } from './types/common'
 
 dotenv.config()
 
-export const createParams = (config: SketchConfig): SketchParams => {
+export const createCanvas = (
+  el: HTMLElement,
+  dimensions?: Vec2,
+): HTMLCanvasElement => {
+  const canvas = document.createElement('canvas')
+  el.appendChild(canvas)
+
+  if (dimensions) {
+    const [x, y] = dimensions
+    canvas.width = x
+    canvas.height = y
+  } else {
+    canvas.width = el.clientWidth
+    canvas.height = el.clientHeight
+  }
+
+  return canvas
+}
+
+export const createParams = (config: SketchConfig): SketchyParams => {
   const id = config.containerId || 'root'
   const rootElement = config.element || document.getElementById(id)
   if (!rootElement) throw new Error(`No Root Element Found at ${id}`)
 
-  const canvas = document.createElement('canvas')
-  rootElement.appendChild(canvas)
+  const canvas = createCanvas(rootElement, config.dimensions)
+
   const context = canvas.getContext('2d')
   if (!context) throw new Error(`cannot initialize canvas`)
 
-  if (config.dimensions) {
-    const [x, y] = config.dimensions
-    canvas.width = x
-    canvas.height = y
-  } else {
-    canvas.width = rootElement.clientWidth
-    canvas.height = rootElement.clientHeight
-  }
-
-  context.lineCap
-
-  const params: SketchParams = {
+  const params: SketchyParams = {
     // state
     // config
     time: config.timeOffset || 0,

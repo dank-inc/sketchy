@@ -4,7 +4,9 @@ A super-dank sketching library built with ♥ and typescript.
 
 # Getting Started
 
-This library is a nice typescript wrapper for the 2d Web canvas.
+This library is a nice lightweight typescript wrapper for the 2d Web canvas. It's purpose is to give you a simple interface to the canvas, with minimal overhead.
+
+The goal of this project is to give a creative coder an entrypoint between raw javascript and p5.js
 
 start by creating a config object:
 

@@ -2,12 +2,22 @@ import { Lerpr, Scaler, SinCosFn } from '../maff'
 import { LinearGradientGeneratorFn } from '../helpers/color'
 
 export type SketchFrame = (params: SketchParams) => void
-
 export type Sketch = (params: SketchParams) => Frame
 export type Frame = (params: SketchParams) => void
 
 export type SketchState<T = {}> = T
 export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
+
+export type SketchyParams = Canvas2DParams & SketchParams
+export type Canvas2DParams = {
+  // render helpers
+  context: CanvasRenderingContext2D
+  setFilter: (val: string) => void
+  setFillStyle: (val: string) => void
+  setStrokeStyle: (val: string) => void
+  setBlendMode: (val: BlendMode) => void
+  createGradient: LinearGradientGeneratorFn
+}
 
 export type SketchParams = {
   // config
@@ -17,7 +27,6 @@ export type SketchParams = {
   width: number
   height: number
   animated?: boolean
-  context: CanvasRenderingContext2D
   // Maff
   TAU: number
   PI: number
@@ -26,15 +35,6 @@ export type SketchParams = {
   cos: SinCosFn
   t: Scaler
   lerp: Lerpr
-
-  // render helpers
-  setFilter: (val: string) => void
-  setFillStyle: (val: string) => void
-  setStrokeStyle: (val: string) => void
-  setBlendMode: (val: BlendMode) => void
-
-  // generators
-  createGradient: LinearGradientGeneratorFn
 }
 
 export type SketchConfig = {
