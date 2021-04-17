@@ -1,9 +1,8 @@
 import { Lerpr, Scaler, SinCosFn } from '../maff'
 import { LinearGradientGeneratorFn } from '../helpers/color'
 
-export type SketchFrame = (params: SketchParams) => void
-export type Sketch = (params: SketchParams) => Frame
-export type Frame = (params: SketchParams) => void
+export type Sketch = (params: SketchyParams) => Frame
+export type Frame = (params: SketchyParams) => void
 
 export type SketchState<T = {}> = T
 export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
