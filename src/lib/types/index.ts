@@ -30,10 +30,12 @@ export type SketchParams = {
   // Maff
   TAU: number
   PI: number
+
   abs: Math['abs']
   sin: SinCosFn
   cos: SinCosFn
   t: Scaler
+  r: Scaler
   lerp: Lerpr
 }
 

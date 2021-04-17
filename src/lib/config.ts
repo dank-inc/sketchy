@@ -63,6 +63,7 @@ export const createParams = (config: SketchConfig): SketchyParams => {
     sin,
     cos,
     t: () => 0,
+    r: (scale = 1, offset = 0) => Math.random() * scale + offset,
     lerp,
   }
 
