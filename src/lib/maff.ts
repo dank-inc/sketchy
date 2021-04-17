@@ -22,3 +22,9 @@ export type Lerpr = (
 
 export const lerp: Lerpr = (u, max, margin = 0, min = 0) =>
   u * (max - margin * 2) - min + margin
+
+export const r: Scaler = (scale = 1, offset = 0) =>
+  Math.random() * scale + offset
+
+export const n: Scaler = (scale = 1, offset = 0) =>
+  Math.random() * scale + offset

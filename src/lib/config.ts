@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 
 import { BlendMode, SketchConfig, SketchyParams } from './types'
-import { cos, sin, lerp } from './maff'
+import { cos, sin, lerp, r, n } from './maff'
 import { createLinearGradient } from './helpers/color'
 import { Vec2 } from './types/common'
 
@@ -50,7 +50,7 @@ export const createParams = (config: SketchConfig): SketchyParams => {
     // render helpers
     setFilter: (val: string) => (context.filter = val),
     setFillStyle: (val: string) => (context.fillStyle = val),
-    setStrokeStyle: (val: string) => (context.fillStyle = val),
+    setStrokeStyle: (val: string) => (context.strokeStyle = val),
     setBlendMode: (val: BlendMode) => (context.globalCompositeOperation = val),
 
     // generators
@@ -63,7 +63,8 @@ export const createParams = (config: SketchConfig): SketchyParams => {
     sin,
     cos,
     t: () => 0,
-    r: (scale = 1, offset = 0) => Math.random() * scale + offset,
+    r,
+    n,
     lerp,
   }
 

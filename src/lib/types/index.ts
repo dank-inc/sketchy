@@ -34,7 +34,10 @@ export type SketchParams = {
   sin: SinCosFn
   cos: SinCosFn
   t: Scaler
+
   r: Scaler
+  n: Scaler
+
   lerp: Lerpr
 }
 
