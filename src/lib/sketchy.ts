@@ -25,6 +25,8 @@ export const loadSketch = (sketch: Sketch, params: SketchyParams) => {
   const frame = sketch(params)
 
   params.animated ? animateSketch(frame, params) : frame(params)
+
+  return params.context
 }
 
 export const createSketch = (sketch: Sketch) => sketch
