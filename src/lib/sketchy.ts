@@ -4,10 +4,10 @@ const animateSketch = (frame: Frame, params: SketchyParams) => {
   frame(params)
 
   const now = +new Date()
-
   const dt = now - (params.startTime + params.time)
-
   const time = params.time + dt
+
+  if (!params.animated) return
 
   requestAnimationFrame(() =>
     animateSketch(frame, {
