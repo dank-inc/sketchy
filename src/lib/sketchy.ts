@@ -19,14 +19,17 @@ const animateSketch = (frame: Frame, params: SketchyParams) => {
   )
 }
 
-export const loadSketch = (sketch: Sketch, params: SketchyParams) => {
+export const loadSketch = (
+  sketch: Sketch,
+  params: SketchyParams,
+): SketchyParams => {
   params.context.clearRect(0, 0, params.width, params.height)
 
   const frame = sketch(params)
 
   params.animated ? animateSketch(frame, params) : frame(params)
 
-  return params.context
+  return params
 }
 
 export const createSketch = (sketch: Sketch) => sketch
