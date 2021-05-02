@@ -20,6 +20,7 @@ export type Canvas2DParams = {
   createGradient: LinearGradientGeneratorFn
 
   // draw helpers
+  saver: (body: () => void) => void
   circle: (x: number, y: number, r: number) => void
 }
 

@@ -14,3 +14,11 @@ export const arc = (
 
   context.closePath()
 }
+
+export const saver = (context: CanvasRenderingContext2D, body: () => void) => {
+  context.save()
+
+  body()
+
+  context.restore()
+}
