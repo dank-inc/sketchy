@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import { BlendMode, SketchConfig, SketchyParams } from './types'
 import { cos, sin, lerp, r, n } from './maff'
 import { createLinearGradient } from './helpers/color'
+import { arc } from './helpers/draw'
 import { Vec2 } from './types/common'
 
 dotenv.config()
@@ -52,6 +53,9 @@ export const createParams = (config: SketchConfig): SketchyParams => {
     setFillStyle: (val: string) => (context.fillStyle = val),
     setStrokeStyle: (val: string) => (context.strokeStyle = val),
     setBlendMode: (val: BlendMode) => (context.globalCompositeOperation = val),
+
+    // draw helpers
+    circle: (x, y, r) => arc(context, x, y, r),
 
     // generators
     createGradient: () => createLinearGradient(context),

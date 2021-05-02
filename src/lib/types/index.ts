@@ -8,14 +8,19 @@ export type SketchState<T = {}> = T
 export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
 
 export type SketchyParams = Canvas2DParams & SketchParams
+
 export type Canvas2DParams = {
-  // render helpers
   context: CanvasRenderingContext2D
+
+  // render helpers
   setFilter: (val: string) => void
   setFillStyle: (val: string) => void
   setStrokeStyle: (val: string) => void
   setBlendMode: (val: BlendMode) => void
   createGradient: LinearGradientGeneratorFn
+
+  // draw helpers
+  circle: (x: number, y: number, r: number) => void
 }
 
 export type SketchParams = {
