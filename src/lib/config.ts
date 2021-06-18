@@ -28,7 +28,7 @@ export const createCanvas = (
 }
 
 export const createParams = (config: SketchConfig): SketchyParams => {
-  const id = config.containerId || 'root'
+  const id = config.containerId || config.element?.id || 'sketchy'
   const rootElement = config.element || document.getElementById(id)
   if (!rootElement) throw new Error(`No Root Element Found at ${id}`)
 
