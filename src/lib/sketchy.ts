@@ -1,6 +1,6 @@
 import { Frame, Sketch, SketchyParams } from './types'
 
-const animateSketch = (frame: Frame, params: SketchyParams) => {
+const animateSketch = <T>(frame: Frame, params: SketchyParams<T>) => {
   frame(params)
 
   const now = +new Date()
@@ -8,6 +8,7 @@ const animateSketch = (frame: Frame, params: SketchyParams) => {
   const time = params.time + dt
 
   if (!params.animated) return
+  // update external data
 
   requestAnimationFrame(() =>
     animateSketch(frame, {
@@ -19,10 +20,10 @@ const animateSketch = (frame: Frame, params: SketchyParams) => {
   )
 }
 
-export const loadSketch = (
+export const loadSketch = <T>(
   sketch: Sketch,
-  params: SketchyParams,
-): SketchyParams => {
+  params: SketchyParams<T>,
+): SketchyParams<T> => {
   params.context.clearRect(0, 0, params.width, params.height)
 
   const frame = sketch(params)
@@ -32,4 +33,4 @@ export const loadSketch = (
   return params
 }
 
-export const createSketch = (sketch: Sketch) => sketch
+export const createSketch = <T>(sketch: Sketch<T>) => sketch

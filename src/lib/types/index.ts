@@ -1,13 +1,13 @@
 import { Lerpr, Scaler, SinCosFn } from '../maff'
 import { LinearGradientGeneratorFn } from '../helpers/color'
 
-export type Sketch = (params: SketchyParams) => Frame
-export type Frame = (params: SketchyParams) => void
+export type Frame = <T>(params: SketchyParams<T>) => void
+export type Sketch = <T>(params: SketchyParams<T>) => Frame<T>
 
-export type SketchState<T = {}> = T
+export type SketchState<T> = T
 export type SketchStateSetter<T> = (key: keyof T, value: T[keyof T]) => void
 
-export type SketchyParams = Canvas2DParams & SketchParams
+export type SketchyParams<T> = Canvas2DParams & SketchParams<T>
 
 export type Canvas2DParams = {
   context: CanvasRenderingContext2D
@@ -24,8 +24,9 @@ export type Canvas2DParams = {
   circle: (x: number, y: number, r: number) => void
 }
 
-export type SketchParams = {
+export type SketchParams<T> = {
   // config
+  data?: T
   time: number
   startTime: number
   dt: number
@@ -47,7 +48,8 @@ export type SketchParams = {
   lerp: Lerpr
 }
 
-export type SketchConfig = {
+export type SketchConfig<T> = {
+  data: T
   containerId?: string
   element?: HTMLElement
   animate?: true
