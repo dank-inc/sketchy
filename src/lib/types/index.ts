@@ -52,7 +52,7 @@ export type SketchConfig<T> = {
   data: T
   containerId?: string
   element?: HTMLElement
-  animate?: true
+  animate?: boolean
   dimensions?: [number, number]
   timeOffset?: number
 }
