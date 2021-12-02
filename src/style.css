@@ -7,12 +7,17 @@ body {
   margin: 0;
   padding: 0;
   background: #111;
+  display: grid;
+  
 }
+
+
 
 #root {
   height: 100vh;
   width: 100%;
-  display: flex;
+  /* display: flex; */
+  grid-template-columns: 1fr 1fr;
 }
 
 canvas {

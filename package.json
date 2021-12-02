@@ -1,6 +1,6 @@
 {
   "name": "@dank-inc/sketchy",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "author": "Elijah Lucian",
   "description": "A Super-dank sketching library built with ♥ and typescript!",
   "repository": {
@@ -37,7 +37,7 @@
     "bezier-easing": "^2.1.0",
     "dotenv": "^8.2.0",
     "nice-color-palettes": "^3.0.0",
-    "parcel": "^2.0.0-beta.2",
+    "parcel": "^2.0.1",
     "simplex-noise": "^2.4.0",
     "typescript": "^4.2.3"
   }

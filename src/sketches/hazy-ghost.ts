@@ -25,12 +25,12 @@ export default createSketch(
     return ({ t }) => {
       context.lineCap = 'butt'
 
-      setBlendMode('xor')
+      // setBlendMode('xor')
 
       setFillStyle('#000')
       context.fillRect(0, 0, width, height)
 
-      setBlendMode('screen')
+      // setBlendMode('screen')
 
       context.lineCap = 'round'
 

@@ -12,7 +12,8 @@ export const createCanvas = (
   el: HTMLElement,
   dimensions?: Vec2,
 ): HTMLCanvasElement => {
-  const canvas = document.createElement('canvas')
+  const canvas =
+    document.querySelector('canvas') || document.createElement('canvas')
   el.appendChild(canvas)
 
   if (dimensions) {
