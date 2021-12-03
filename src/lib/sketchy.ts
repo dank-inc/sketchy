@@ -2,6 +2,8 @@ import { Frame, Sketch, SketchyParams } from './types'
 
 let requestId: number | null
 
+let lastSketch: SketchyParams | null
+
 const animateSketch = (frame: Frame, params: SketchyParams) => {
   frame(params)
 
@@ -30,6 +32,12 @@ export const loadSketch = (
     cancelAnimationFrame(requestId)
     requestId = null
   }
+  if (lastSketch) {
+    lastSketch.onKill?.()
+    lastSketch = null
+  }
+
+  lastSketch = params
   params.requestId = Math.floor(Math.random() * 100000)
   params.context.clearRect(0, 0, params.width, params.height)
 

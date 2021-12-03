@@ -16,6 +16,7 @@ export type Canvas2DParams = {
   setStrokeStyle: (val: string) => void
   setBlendMode: (val: BlendMode) => void
   createGradient: LinearGradientGeneratorFn
+  onKill?: () => void
 
   // draw helpers
   saver: (body: () => void) => void
