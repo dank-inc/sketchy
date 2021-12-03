@@ -1,7 +1,7 @@
 import { Sketch } from '../lib/types'
 import example from './example'
 
-const sketches: Record<string, Sketch> = {
+const sketches: Record<string, Sketch<any>> = {
   example,
 }
 

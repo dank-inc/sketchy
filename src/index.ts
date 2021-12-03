@@ -4,12 +4,10 @@ import townGame from './sketches/town-game'
 import { loadSketch } from './lib/sketchy'
 import { createParams } from './lib/config'
 
-const params = createParams<any>({
+const params = createParams({
   containerId: 'root',
   animate: true,
-  // dimensions: [350, 250],
+  dimensions: [600, 600],
 })
 
 const sketchParams = loadSketch(townGame, params)
-
-console.log(sketchParams)

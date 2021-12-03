@@ -2,10 +2,8 @@ import { Frame, Sketch, SketchyParams } from './types'
 
 let requestId: number | null
 
-const animateSketch = <T>(frame: Frame<T>, params: SketchyParams<T>) => {
+const animateSketch = (frame: Frame, params: SketchyParams) => {
   frame(params)
-
-  console.log('animating', params.requestId)
 
   const now = +new Date()
   const dt = now - (params.startTime + params.time)
@@ -24,10 +22,10 @@ const animateSketch = <T>(frame: Frame<T>, params: SketchyParams<T>) => {
   )
 }
 
-export const loadSketch = <T>(
-  sketch: Sketch<T>,
-  params: SketchyParams<T>,
-): SketchyParams<T> => {
+export const loadSketch = (
+  sketch: Sketch,
+  params: SketchyParams,
+): SketchyParams => {
   if (requestId) {
     cancelAnimationFrame(requestId)
     requestId = null
@@ -42,4 +40,4 @@ export const loadSketch = <T>(
   return params
 }
 
-export const createSketch = <T>(sketch: Sketch<T>) => sketch
+export const createSketch = (sketch: Sketch) => sketch

@@ -29,7 +29,7 @@ export const createCanvas = (
   return canvas
 }
 
-export const createParams = <T>(config: SketchConfig<T>): SketchyParams<T> => {
+export const createParams = (config: SketchConfig): SketchyParams => {
   const id = config.containerId || config.element?.id || 'sketchy'
   const rootElement = config.element || document.getElementById(id)
   if (!rootElement) throw new Error(`No Root Element Found at ${id}`)
@@ -39,11 +39,10 @@ export const createParams = <T>(config: SketchConfig<T>): SketchyParams<T> => {
   const context = canvas.getContext('2d')
   if (!context) throw new Error(`cannot initialize canvas`)
 
-  const params: SketchyParams<T> = {
+  const params: SketchyParams = {
     // state
     // config
     requestId: null,
-    data: config.data,
     time: config.timeOffset || 0,
     dt: 0,
     startTime: +new Date(),

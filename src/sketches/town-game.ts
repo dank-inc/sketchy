@@ -1,11 +1,11 @@
 import { createSketch } from '../lib'
 import { hsl } from '../lib/helpers'
 
-export default createSketch<State>(
-  ({ context, data, circle, setFillStyle, setStrokeStyle, shape, sin }) => {
+export default createSketch(
+  ({ context, circle, setFillStyle, setStrokeStyle, shape, sin }) => {
     console.log('starting game')
 
-    data = { venues, venueId: 0, npcs: [{ u: 0, v: 0 }] }
+    const data: State = { venues, venueId: 0, npcs: [{ u: 0, v: 0 }] }
     const genU = () => (Math.random() - 0.5) * 2
     setInterval(() => {
       for (let npc of data.npcs) {
