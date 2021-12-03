@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import { BlendMode, SketchConfig, SketchyParams } from './types'
 import { cos, sin, lerp, r, n } from './maff'
 import { createLinearGradient } from './helpers/color'
-import { arc, saver } from './helpers/draw'
+import { arc, drawShape, saver } from './helpers/draw'
 import { Vec2 } from './types/common'
 
 dotenv.config()
@@ -14,6 +14,7 @@ export const createCanvas = (
 ): HTMLCanvasElement => {
   const canvas =
     document.querySelector('canvas') || document.createElement('canvas')
+
   el.appendChild(canvas)
 
   if (dimensions) {
@@ -41,6 +42,7 @@ export const createParams = <T>(config: SketchConfig<T>): SketchyParams<T> => {
   const params: SketchyParams<T> = {
     // state
     // config
+    requestId: null,
     data: config.data,
     time: config.timeOffset || 0,
     dt: 0,
@@ -59,6 +61,7 @@ export const createParams = <T>(config: SketchConfig<T>): SketchyParams<T> => {
     // draw helpers
     saver: (body: () => void) => saver(context, body),
     circle: (x, y, r) => arc(context, x, y, r),
+    shape: (points) => drawShape(context, points),
 
     // generators
     createGradient: () => createLinearGradient(context),

@@ -13,6 +13,7 @@ export type Canvas2DParams = {
   context: CanvasRenderingContext2D
 
   // render helpers
+  requestId: number | null
   setFilter: (val: string) => void
   setFillStyle: (val: string) => void
   setStrokeStyle: (val: string) => void
@@ -22,6 +23,7 @@ export type Canvas2DParams = {
   // draw helpers
   saver: (body: () => void) => void
   circle: (x: number, y: number, r: number) => void
+  shape: (points: [number, number][]) => void
 }
 
 export type SketchParams<T> = {
@@ -49,7 +51,7 @@ export type SketchParams<T> = {
 }
 
 export type SketchConfig<T> = {
-  data: T
+  data?: T
   containerId?: string
   element?: HTMLElement
   animate?: boolean

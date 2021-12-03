@@ -6,21 +6,17 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #111;
-  display: grid;
-  
+  display: flex;
 }
 
-
-
 #root {
-  height: 100vh;
+  background: #111;
+  height: 99vh;
+  margin: auto;
   width: 100%;
-  /* display: flex; */
-  grid-template-columns: 1fr 1fr;
 }
 
 canvas {
+  height: 100%;
   width: 100%;
-  margin: auto;
 }

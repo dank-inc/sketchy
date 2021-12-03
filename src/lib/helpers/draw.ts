@@ -7,7 +7,6 @@ export const arc = (
   end = Math.PI * 2,
 ) => {
   //
-
   context.beginPath()
 
   context.arc(x, y, r, start, end)
@@ -21,4 +20,18 @@ export const saver = (context: CanvasRenderingContext2D, body: () => void) => {
   body()
 
   context.restore()
+}
+
+export const drawShape = (
+  context: CanvasRenderingContext2D,
+  points: [number, number][],
+) => {
+  context.beginPath()
+  const [x, y] = points[0]
+
+  context.moveTo(x, y)
+  for (let [x, y] of points) {
+    context.lineTo(x, y)
+  }
+  context.lineTo(x, y)
 }

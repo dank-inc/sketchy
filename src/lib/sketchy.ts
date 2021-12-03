@@ -1,7 +1,11 @@
 import { Frame, Sketch, SketchyParams } from './types'
 
+let requestId: number | null
+
 const animateSketch = <T>(frame: Frame<T>, params: SketchyParams<T>) => {
   frame(params)
+
+  console.log('animating', params.requestId)
 
   const now = +new Date()
   const dt = now - (params.startTime + params.time)
@@ -10,7 +14,7 @@ const animateSketch = <T>(frame: Frame<T>, params: SketchyParams<T>) => {
   if (!params.animated) return
   // update external data
 
-  requestAnimationFrame(() =>
+  requestId = requestAnimationFrame(() =>
     animateSketch(frame, {
       ...params,
       time,
@@ -24,6 +28,11 @@ export const loadSketch = <T>(
   sketch: Sketch<T>,
   params: SketchyParams<T>,
 ): SketchyParams<T> => {
+  if (requestId) {
+    cancelAnimationFrame(requestId)
+    requestId = null
+  }
+  params.requestId = Math.floor(Math.random() * 100000)
   params.context.clearRect(0, 0, params.width, params.height)
 
   const frame = sketch(params)
