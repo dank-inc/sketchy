@@ -108,4 +108,6 @@ export const load3dSketch = (sketch: Sketch3D, params: SketchParams3D) => {
     requestId = requestAnimationFrame(render)
   }
   render()
+
+  return params
 }
