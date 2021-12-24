@@ -23,15 +23,18 @@ export const hex = (ru: number, gu?: number, bu?: number) => {
   return `#${r}${g}${b}`
 }
 
-//  TODO Create Linear Gradient
-export type LinearGradientGeneratorFn = (
-  ctx: CanvasRenderingContext2D,
-) => CanvasGradient
-export const createLinearGradient: LinearGradientGeneratorFn = (ctx) => {
-  var grd = ctx.createLinearGradient(0, 0, 0, 10)
-  // grd.addColorStop(0, c1);
-  // grd.addColorStop(1, c2);
-
+export const createLinearGradient = (
+  context: CanvasRenderingContext2D,
+  c1: string,
+  c2: string,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+) => {
+  var grd = context.createLinearGradient(x1, y1, x2, y2)
+  grd.addColorStop(0, c1)
+  grd.addColorStop(1, c2)
   return grd
 }
 

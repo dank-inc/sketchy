@@ -63,7 +63,14 @@ export const createParams = (config: SketchConfig): SketchyParams => {
     shape: (points) => drawShape(context, points),
 
     // generators
-    createGradient: () => createLinearGradient(context),
+    createGradient: (
+      c1: string,
+      c2: string,
+      x1: number,
+      y1: number,
+      x2: number,
+      y2: number,
+    ) => createLinearGradient(context, c1, c2, x1, y1, x2, y2),
 
     // maff
     TAU: Math.PI * 2,

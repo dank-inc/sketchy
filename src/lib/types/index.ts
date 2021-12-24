@@ -1,5 +1,4 @@
 import { Lerpr, Scaler, SinCosFn } from '../maff'
-import { LinearGradientGeneratorFn } from '../helpers/color'
 
 export type Frame = (params: SketchyParams) => void
 export type Sketch = (params: SketchyParams) => Frame
@@ -15,7 +14,14 @@ export type Canvas2DParams = {
   setFillStyle: (val: string) => void
   setStrokeStyle: (val: string) => void
   setBlendMode: (val: BlendMode) => void
-  createGradient: LinearGradientGeneratorFn
+  createGradient: (
+    c1: string,
+    c2: string,
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+  ) => CanvasGradient
   onKill?: () => void
 
   // draw helpers
