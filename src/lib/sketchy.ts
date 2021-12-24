@@ -1,7 +1,6 @@
 import { Frame, Sketch, SketchyParams } from './types'
 
 let requestId: number | null
-
 let lastSketch: SketchyParams | null
 
 const animateSketch = (frame: Frame, params: SketchyParams) => {
