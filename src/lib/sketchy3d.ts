@@ -1,13 +1,13 @@
 import * as THREE from 'three'
 
-type Config = {
+export type SketchConfig3D = {
   containerId: string
   w?: number
   h?: number
   animated?: boolean
 }
 
-type SketchParams = {
+type SketchParams3D = {
   three: typeof THREE
   el: HTMLElement
   canvas: HTMLCanvasElement
@@ -28,10 +28,10 @@ type SketchParams = {
   PI: number
 }
 
-type Frame = (params: SketchParams) => void
-type Sketch = (params: SketchParams) => Frame
+type Frame3D = (params: SketchParams3D) => void
+export type Sketch3D = (params: SketchParams3D) => Frame3D
 
-export const create3dParams = (config: Config): SketchParams => {
+export const create3dParams = (config: SketchConfig3D): SketchParams3D => {
   const el = document.getElementById(config.containerId)
 
   if (!el) throw new Error(`No element with id ${config.containerId}`)
@@ -79,11 +79,11 @@ export const create3dParams = (config: Config): SketchParams => {
     state,
   }
 }
-export const create3dSketch = (sketch: Sketch) => sketch
+export const create3dSketch = (sketch: Sketch3D) => sketch
 
 let requestId: number | null = null
 
-export const load3dSketch = (sketch: Sketch, params: SketchParams) => {
+export const load3dSketch = (sketch: Sketch3D, params: SketchParams3D) => {
   if (requestId) {
     cancelAnimationFrame(requestId)
     requestId = null
