@@ -34,7 +34,9 @@ type Sketch = (params: SketchParams) => Frame
 export const create3dParams = (config: Config): SketchParams => {
   const el = document.getElementById(config.containerId)
 
-  for (let child of el.children) {
+  if (!el) throw new Error(`No element with id ${config.containerId}`)
+
+  for (let child of Array.from(el.children)) {
     el.removeChild(child)
   }
 
@@ -63,7 +65,7 @@ export const create3dParams = (config: Config): SketchParams => {
     clock: new THREE.Clock(true),
     width,
     height,
-    animated: config.animated,
+    animated: !!config.animated,
     time: 0,
     dt: 0,
     startTime: +new Date(),
