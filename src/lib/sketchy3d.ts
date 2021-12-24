@@ -94,6 +94,8 @@ export const load3dSketch = (sketch: Sketch3D, params: SketchParams3D) => {
   if (!params.animated) return
 
   const render = () => {
+    if (!params.animated) return
+
     const time = +new Date() - params.startTime
 
     frame({
