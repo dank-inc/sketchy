@@ -8,6 +8,8 @@ This library is a nice lightweight typescript wrapper for the 2d Web canvas. It'
 
 The goal of this project is to give a creative coder an entrypoint between raw javascript and p5.js
 
+React Example [here](https://github.com/dank-inc/react-sketchy/blob/main/src/lib/ReactSketchy.tsx)
+
 start by creating a config object:
 
 ```ts
