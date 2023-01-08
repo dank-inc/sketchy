@@ -40,7 +40,7 @@ export const createParams = (config: SketchConfig): SketchyParams => {
   if (!context) throw new Error(`cannot initialize canvas`)
 
   const params: SketchyParams = {
-    // state
+    data: config.data || {},
     // config
     requestId: null,
     time: config.timeOffset || 0,
@@ -82,6 +82,7 @@ export const createParams = (config: SketchConfig): SketchyParams => {
     r,
     n,
     lerp,
+    stop: () => false,
   }
 
   return params

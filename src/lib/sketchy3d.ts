@@ -5,6 +5,7 @@ export type SketchConfig3D = {
   w?: number
   h?: number
   animated?: boolean
+  data?: Record<string, any>
 }
 
 type SketchParams3D = {
@@ -26,6 +27,7 @@ type SketchParams3D = {
   t: (scale?: number) => number
   TAU: number
   PI: number
+  data: Record<string, any>
 }
 
 type Frame3D = (params: SketchParams3D) => void
@@ -77,6 +79,7 @@ export const create3dParams = (config: SketchConfig3D): SketchParams3D => {
     canvas,
     renderer,
     state,
+    data: config.data || {},
   }
 }
 export const create3dSketch = (sketch: Sketch3D) => sketch

@@ -51,6 +51,8 @@ export type SketchParams = {
   n: Scaler
 
   lerp: Lerpr
+  stop: () => boolean
+  data: Record<string, any>
 }
 
 export type SketchConfig = {
@@ -59,6 +61,7 @@ export type SketchConfig = {
   animate?: boolean
   dimensions?: [number, number]
   timeOffset?: number
+  data?: Record<string, any>
 }
 
 export type BlendMode =

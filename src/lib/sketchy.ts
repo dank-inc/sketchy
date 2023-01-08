@@ -4,14 +4,13 @@ let requestId: number | null
 let lastSketch: SketchyParams | null
 
 const animateSketch = (frame: Frame, params: SketchyParams) => {
+  if (!params.animated) return
+
   frame(params)
 
   const now = +new Date()
   const dt = now - (params.startTime + params.time)
   const time = params.time + dt
-
-  if (!params.animated) return
-  // update external data
 
   requestId = requestAnimationFrame(() =>
     animateSketch(frame, {
@@ -43,6 +42,7 @@ export const loadSketch = (
   const frame = sketch(params)
 
   params.animated ? animateSketch(frame, params) : frame(params)
+  params.stop = () => (params.animated = false)
 
   return params
 }
