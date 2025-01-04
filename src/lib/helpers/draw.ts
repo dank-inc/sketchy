@@ -1,10 +1,21 @@
+type ArtOptions = {
+  fill?: boolean
+  stroke?: boolean
+  start?: number
+  end?: number
+}
+
 export const arc = (
   context: CanvasRenderingContext2D,
   x: number,
   y: number,
   r: number,
-  start = 0,
-  end = Math.PI * 2,
+  {
+    fill = true,
+    stroke = false,
+    start = 0,
+    end = Math.PI * 2,
+  }: ArtOptions = {},
 ) => {
   //
   context.beginPath()
@@ -12,6 +23,8 @@ export const arc = (
   context.arc(x, y, r, start, end)
 
   context.closePath()
+  if (stroke) context.stroke()
+  if (fill) context.fill()
 }
 
 export const saver = (context: CanvasRenderingContext2D, body: () => void) => {
