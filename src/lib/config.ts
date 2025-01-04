@@ -1,12 +1,8 @@
-import dotenv from 'dotenv'
-
 import { BlendMode, SketchConfig, SketchyParams } from './types'
 import { cos, sin, lerp, r, n } from './maff'
 import { createLinearGradient } from './helpers/color'
 import { arc, drawShape, saver } from './helpers/draw'
 import { Vec2 } from './types/common'
-
-dotenv.config()
 
 export const createCanvas = (
   el: HTMLElement,
