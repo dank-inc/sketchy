@@ -27,8 +27,8 @@ export type Canvas2DParams = {
 
   // draw helpers
   saver: (body: () => void) => void
-  circle: (x: number, y: number, r: number, options: ArcOptions) => void
-  shape: (points: [number, number][], options: ShapeOptions) => void
+  circle: (x: number, y: number, r: number, options?: ArcOptions) => void
+  shape: (points: [number, number][], options?: ShapeOptions) => void
 }
 
 export type SketchParams = {
