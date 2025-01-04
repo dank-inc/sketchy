@@ -1,4 +1,4 @@
-type ArtOptions = {
+export type ArcOptions = {
   fill?: boolean
   stroke?: boolean
   start?: number
@@ -15,7 +15,7 @@ export const arc = (
     stroke = false,
     start = 0,
     end = Math.PI * 2,
-  }: ArtOptions = {},
+  }: ArcOptions = {},
 ) => {
   //
   context.beginPath()
@@ -35,7 +35,7 @@ export const saver = (context: CanvasRenderingContext2D, body: () => void) => {
   context.restore()
 }
 
-type ShapeOptions = {
+export type ShapeOptions = {
   fill?: boolean
   stroke?: boolean
   closed?: boolean

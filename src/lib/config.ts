@@ -55,8 +55,8 @@ export const createParams = (config: SketchConfig): SketchyParams => {
 
     // draw helpers
     saver: (body: () => void) => saver(context, body),
-    circle: (x, y, r) => arc(context, x, y, r),
-    shape: (points) => drawShape(context, points),
+    circle: (x, y, r, options) => arc(context, x, y, r, options),
+    shape: (points, options) => drawShape(context, points, options),
 
     // generators
     createGradient: (
