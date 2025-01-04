@@ -35,9 +35,16 @@ export const saver = (context: CanvasRenderingContext2D, body: () => void) => {
   context.restore()
 }
 
+type ShapeOptions = {
+  fill?: boolean
+  stroke?: boolean
+  closed?: boolean
+}
+
 export const drawShape = (
   context: CanvasRenderingContext2D,
   points: [number, number][],
+  { fill = false, stroke = false, closed = true }: ShapeOptions = {},
 ) => {
   context.beginPath()
   const [x, y] = points[0]
@@ -46,5 +53,8 @@ export const drawShape = (
   for (let [x, y] of points) {
     context.lineTo(x, y)
   }
-  context.lineTo(x, y)
+  if (closed) context.lineTo(x, y)
+
+  if (stroke) context.stroke()
+  if (fill) context.fill()
 }
